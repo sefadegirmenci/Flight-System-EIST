@@ -9,12 +9,14 @@ import { MatCardModule } from "@angular/material/card";
 import { CardCollectionComponent } from './card-collection/card-collection.component';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {ElevationDirective} from "./card/ElevationDirective";
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    CardCollectionComponent
+    CardCollectionComponent,
+    ElevationDirective
   ],
   imports: [
     BrowserModule,
