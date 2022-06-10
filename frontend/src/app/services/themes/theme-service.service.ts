@@ -23,6 +23,10 @@ export class ThemeService {
     this.styleManager.setStyle("theme", `assets/themes/${theme.value}.css`)
   }
 
+  setDefaultTheme() {
+    this.setTheme(themes[0]);
+  }
+
   getTheme() {
     return this.activeTheme;
   }
