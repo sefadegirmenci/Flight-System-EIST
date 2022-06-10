@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Theme} from "../../types";
 import {ThemeService} from "../../services/themes/theme-service.service";
 
@@ -9,15 +9,15 @@ import {ThemeService} from "../../services/themes/theme-service.service";
 })
 export class ProfileComponent implements OnInit {
   public themes: Theme[] = this.themeService.getThemeOptions();
-  public selectedTheme: Theme = this.themes[0];
+  public selectedTheme: Theme = this.themeService.getTheme();
 
-  constructor(private themeService: ThemeService) { }
+  constructor(private themeService: ThemeService) {
+  }
 
   ngOnInit(): void {
   }
 
-  setTheme(theme: Theme)
-  {
+  setTheme(theme: Theme) {
     console.log("Setting theme to: " + theme.label)
     this.themeService.setTheme(theme);
   }

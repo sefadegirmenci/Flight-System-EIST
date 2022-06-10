@@ -24,7 +24,7 @@ export class ThemeService {
   }
 
   setDefaultTheme() {
-    this.setTheme(themes[0]);
+    this.setTheme(themes[1]);
   }
 
   getTheme() {
