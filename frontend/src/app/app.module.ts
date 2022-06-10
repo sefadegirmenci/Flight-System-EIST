@@ -14,6 +14,7 @@ import {ElevationDirective} from "./card/ElevationDirective";
 import {RouterModule} from "@angular/router";
 import { OverviewComponent } from './routes/overview/overview.component';
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import { ProfileComponent } from './routes/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
     CardComponent,
     CardCollectionComponent,
     ElevationDirective,
-    OverviewComponent
+    OverviewComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
