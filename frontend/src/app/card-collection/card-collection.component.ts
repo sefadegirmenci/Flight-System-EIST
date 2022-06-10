@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {CardEntry} from "../types";
 
 @Component({
   selector: 'card-collection',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-collection.component.sass']
 })
 export class CardCollectionComponent implements OnInit {
+  @Input()
+  cards!: CardEntry[];
 
   constructor() { }
 
