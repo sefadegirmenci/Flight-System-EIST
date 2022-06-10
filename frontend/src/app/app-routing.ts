@@ -1,4 +1,4 @@
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {SearchFlightsComponent} from "./routes/search-flights/search-flights.component";
 import {SavedFlightsComponent} from "./routes/saved-flights/saved-flights.component";
 import {OverviewComponent} from "./routes/overview/overview.component";
@@ -15,6 +15,7 @@ const routes: Routes = [
   {
     path: 'saved', component: SavedFlightsComponent
   },
+  {path: 'profile', component: ProfileComponent},
   {path: 'profile', component: ProfileComponent},
   {path: '**', redirectTo: ''}
 ]

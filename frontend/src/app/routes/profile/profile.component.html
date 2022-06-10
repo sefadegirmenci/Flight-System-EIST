@@ -1,1 +1,9 @@
-<p>profile works!</p>
+<h1>Hello, Nico Trummer</h1>
+<form>
+  <mat-form-field>
+    <mat-label>Theme</mat-label>
+    <mat-select [(ngModel)]="selectedTheme" name="theme" (selectionChange)="setTheme(selectedTheme)">
+      <mat-option *ngFor="let theme of themes" [value]="theme">{{theme.label}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

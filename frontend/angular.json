@@ -28,7 +28,13 @@
             "inlineStyleLanguage": "sass",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/@angular/material/prebuilt-themes/",
+                "output": "/assets/themes/"
+              }
             ],
             "styles": [
               "src/styles.sass"
