@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatToolbarModule} from "@angular/material/toolbar";
 
+import {AppRoutingModule} from "./app-routing";
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from './card/card.component';
@@ -10,13 +11,17 @@ import { CardCollectionComponent } from './card-collection/card-collection.compo
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {ElevationDirective} from "./card/ElevationDirective";
+import {RouterModule} from "@angular/router";
+import { OverviewComponent } from './routes/overview/overview.component';
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
     CardCollectionComponent,
-    ElevationDirective
+    ElevationDirective,
+    OverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -24,9 +29,11 @@ import {ElevationDirective} from "./card/ElevationDirective";
     MatToolbarModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
