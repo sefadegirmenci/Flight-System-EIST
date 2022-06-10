@@ -2,4 +2,9 @@
   flex: 1 1 auto;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+}
+
 /*# sourceMappingURL=app.component.css.map */

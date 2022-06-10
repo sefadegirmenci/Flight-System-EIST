@@ -23,7 +23,7 @@ import { ProfileComponent } from './routes/profile/profile.component';
     CardCollectionComponent,
     ElevationDirective,
     OverviewComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
