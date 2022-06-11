@@ -1,12 +1,10 @@
-package com.eistgeist.flightsystem.controller;
+package com.eistgeist.flightsystem.rest;
 
 import com.eistgeist.flightsystem.model.Flight;
 import com.eistgeist.flightsystem.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +20,13 @@ public class FlightController {
     }
 
     @GetMapping("flights")
-    public List<Flight> getFlights(){
-        return flightService.getFlights();
+    public ResponseEntity<List<Flight>> getFlights(){
+        return ResponseEntity.ok(flightService.getFlights());
     }
 
-    @PostMapping()
-    public void addFlight(Flight flight){
-        return flightService.addFlight(flight);
+    @PostMapping("flights")
+    public ResponseEntity<Flight> addFlight(@RequestBody Flight flight){
+        return ResponseEntity.ok(flightService.addFlight(flight));
     }
+
 }
