@@ -1,54 +1,25 @@
 package com.eistgeist.flightsystem.model;
 
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@Data
+@Document
 public class Flight implements Serializable {
-    private String departureAirport;
-    private String arrivalAirport;
-    private int flightID;
+    /* Not all the fields are added so that we first have a simpler code */
+    @Id
+    private String id;
+    private int flightNumber;
+    private Airport arrivalAirport;
+    private Airport departureAirport;
 
-    public Flight(int flightID,
-                  String airline,
-                  String departureAirport,
-                  String arrivalAirport
-                  ) {
-        this.departureAirport = departureAirport;
+    public Flight(int flightNumber, Airport arrivalAirport, Airport departureAirport) {
+        this.flightNumber = flightNumber;
         this.arrivalAirport = arrivalAirport;
-        this.flightID = flightID;
-    }
-
-
-    public String getDepartureAirport() {
-        return departureAirport;
-    }
-
-    public void setDepartureAirport(String departureAirport) {
         this.departureAirport = departureAirport;
-    }
-
-    public String getArrivalAirport() {
-        return arrivalAirport;
-    }
-
-    public void setArrivalAirport(String arrivalAirport) {
-        this.arrivalAirport = arrivalAirport;
-    }
-
-    public int getFlightID() {
-        return flightID;
-    }
-
-    public void setFlightID(int flightID) {
-        this.flightID = flightID;
-    }
-
-    @Override
-    public String toString() {
-        return "Flight{" +
-                ", departureAirport='" + departureAirport + '\'' +
-                ", arrivalAirport='" + arrivalAirport + '\'' +
-                ", flightID=" + flightID +
-                '}';
     }
 }
