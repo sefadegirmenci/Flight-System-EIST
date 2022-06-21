@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/")
+@RequestMapping("")
 @AllArgsConstructor
 public class FlightController {
     private final FlightService flightService;
@@ -26,7 +26,7 @@ public class FlightController {
     public ResponseEntity<Flight> addFlight(@RequestBody Flight flight){
         return ResponseEntity.ok(flightService.addFlight(flight));
     }*/
-    @GetMapping(value = "searchFlight/{departurAirport}/{arrivalAirport}",produces = {"application/json"})
+    @GetMapping(value = "search/{departurAirport}/{arrivalAirport}",produces = {"application/json"})
     public ResponseEntity<Flight> searchFlight(@PathVariable Airport departurAirport, @PathVariable Airport arrivalAirport) {
         return ResponseEntity.ok(flightService.searchFlight(departurAirport, arrivalAirport));
     }
