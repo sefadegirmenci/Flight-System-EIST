@@ -26,8 +26,8 @@ public class FlightController {
     public ResponseEntity<Flight> addFlight(@RequestBody Flight flight){
         return ResponseEntity.ok(flightService.addFlight(flight));
     }*/
-    @GetMapping("searchFlight")
-    public ResponseEntity<Flight> searchFlight(Airport departurAirport, Airport arrivalAirport) {
+    @GetMapping(value = "searchFlight/{departurAirport}/{arrivalAirport}",produces = {"application/json"})
+    public ResponseEntity<Flight> searchFlight(@PathVariable Airport departurAirport, @PathVariable Airport arrivalAirport) {
         return ResponseEntity.ok(flightService.searchFlight(departurAirport, arrivalAirport));
     }
 
