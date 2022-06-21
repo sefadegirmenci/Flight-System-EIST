@@ -7,6 +7,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * A class that is used for single instance of flights.
+ * This class is the base for mongodb flight document.
+ */
 @Data
 @Document
 public class Flight implements Serializable {
