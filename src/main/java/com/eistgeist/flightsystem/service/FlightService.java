@@ -21,7 +21,7 @@ public class FlightService {
         return flightRepository.findAll();
     }
     public Flight searchFlight(Airport departureAirport, Airport arrivalAirport) {
-        return flightRepository.findFlightsByArrivalAirportIgnoreCaseAndAndDepartureAirportIgnoreCase(departureAirport, arrivalAirport)
+        return flightRepository.findFlightsByArrivalAirportIgnoreCaseAndDepartureAirportIgnoreCase(departureAirport, arrivalAirport)
                 .orElseThrow(() -> new FlightNotFoundException("Flight not found"));
     }
 
