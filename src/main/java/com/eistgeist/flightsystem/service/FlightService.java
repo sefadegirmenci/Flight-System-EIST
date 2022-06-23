@@ -26,4 +26,7 @@ public class FlightService {
     }
 
 
+    public Flight addFlight(Flight flight) {
+        return flightRepository.save(flight);
+    }
 }
