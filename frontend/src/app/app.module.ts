@@ -21,6 +21,7 @@ import {LoginComponent} from './routes/login/login.component';
 import {MatInputModule} from "@angular/material/input";
 import {SavedFlightsComponent} from "./routes/saved-flights/saved-flights.component";
 import { FlightCardComponent } from './templates/flight-card/flight-card.component';
+import { InFlightServicesComponent } from './routes/in-flight-services/in-flight-services.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FlightCardComponent } from './templates/flight-card/flight-card.compone
     ProfileComponent,
     LoginComponent,
     SavedFlightsComponent,
-    FlightCardComponent
+    FlightCardComponent,
+    InFlightServicesComponent
   ],
   imports: [
     BrowserModule,

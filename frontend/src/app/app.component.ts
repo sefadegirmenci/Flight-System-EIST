@@ -23,4 +23,8 @@ export class AppComponent implements OnInit {
   logout() {
     this.userService.logout();
   }
+
+  hasActiveFlight() {
+    return this.userService.getUser()?.hasActiveFlight();
+  }
 }

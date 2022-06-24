@@ -38,4 +38,8 @@ export class User {
   public setTheme(theme: Theme) {
     this._theme = theme;
   }
+
+  public hasActiveFlight() {
+    return true;
+  }
 }

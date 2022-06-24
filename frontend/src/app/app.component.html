@@ -3,6 +3,9 @@
     <span>Flight application</span>
   </button>
   <span class="spacer"></span>
+  <button *ngIf="hasActiveFlight()" mat-button routerLink="inflight">
+    In-flight services
+  </button>
   <button aria-label="User" class="icon" mat-icon-button routerLink="profile">
     <mat-icon>account_circle</mat-icon>
   </button>
