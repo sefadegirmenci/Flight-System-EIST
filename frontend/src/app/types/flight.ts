@@ -1,5 +1,5 @@
 export class Flight {
-  public constructor(private _departureAirport: string, private _arrivalAirport: string, private _airline: string) {
+  public constructor(private _departureAirport: string, private _arrivalAirport: string, private _airline: string, private _departureTime: Date, private _arrivalTime: Date) {
   }
 
   get departureAirport(): string {
@@ -12,5 +12,14 @@ export class Flight {
 
   get airline(): string {
     return this._airline;
+  }
+
+
+  get departureTime(): Date {
+    return this._departureTime;
+  }
+
+  get arrivalTime(): Date {
+    return this._arrivalTime;
   }
 }

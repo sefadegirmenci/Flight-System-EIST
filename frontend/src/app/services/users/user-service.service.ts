@@ -16,8 +16,8 @@ export class UserService {
     if (username == "nico" && password == "1234") {
       let user = new User("Nico", "Trummer");
 
-      user.saveFlight(new Flight("BER", "MUC", "Lufthansa"));
-      user.saveFlight(new Flight("MUC", "GRZ", "KLM"));
+      user.saveFlight(new Flight("BER", "MUC", "Lufthansa", new Date(), new Date()));
+      user.saveFlight(new Flight("MUC", "GRZ", "KLM", new Date(), new Date()));
       return user;
     }
     return null;
