@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 export class AppComponent implements OnInit {
   title = 'frontend';
 
-  constructor(private themeService: ThemeService, private userService: UserService, private router: Router) {
+  constructor(private themeService: ThemeService, public userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -22,9 +22,5 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userService.logout();
-  }
-
-  hasActiveFlight() {
-    return this.userService.getUser()?.hasActiveFlight();
   }
 }

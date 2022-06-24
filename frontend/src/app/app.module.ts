@@ -20,10 +20,11 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LoginComponent} from './routes/login/login.component';
 import {MatInputModule} from "@angular/material/input";
 import {SavedFlightsComponent} from "./routes/saved-flights/saved-flights.component";
-import { FlightCardComponent } from './templates/flight-card/flight-card.component';
-import { InFlightServicesComponent } from './routes/in-flight-services/in-flight-services.component';
-import { EntertainmentComponent } from './routes/in-flight-services/entertainment/entertainment.component';
-import { MenuComponent } from './routes/in-flight-services/menu/menu.component';
+import {FlightCardComponent} from './templates/flight-card/flight-card.component';
+import {InFlightServicesComponent} from './routes/in-flight-services/in-flight-services.component';
+import {EntertainmentComponent} from './routes/in-flight-services/entertainment/entertainment.component';
+import {MenuComponent} from './routes/in-flight-services/menu/menu.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MenuComponent } from './routes/in-flight-services/menu/menu.component';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule
   ],
   providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]

@@ -39,7 +39,19 @@ export class User {
     this._theme = theme;
   }
 
-  public hasActiveFlight() {
-    return true;
+  public getPastFlights() {
+    return this.getFlights(flight => flight.isPast());
+  }
+
+  public getCurrentFlights() {
+    return this.getFlights(flight => flight.isCurrent());
+  }
+
+  public getFutureFlights() {
+    return this.getFlights(flight => flight.isFuture());
+  }
+
+  private getFlights(filter: (flight: Flight) => boolean) {
+    return this.savedFlights.filter(filter);
   }
 }

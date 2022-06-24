@@ -14,7 +14,15 @@ export class SavedFlightsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getFlights() {
-    return this.userService.getUser()?.savedFlights;
+  getPastFlights() {
+    return this.userService.getUser()?.getPastFlights();
+  }
+
+  getCurrentFlights() {
+    return this.userService.getUser()?.getCurrentFlights();
+  }
+
+  getFutureFlights() {
+    return this.userService.getUser()?.getFutureFlights();
   }
 }
