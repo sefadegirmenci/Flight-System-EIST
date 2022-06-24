@@ -1,9 +1,9 @@
-<mat-card cardElevation>
+<mat-card cardElevation routerLink="{{link}}">
   <mat-card-header>
     <mat-card-title>{{title}}</mat-card-title>
     <mat-card-subtitle *ngIf="subTitle">{{subTitle}}</mat-card-subtitle>
   </mat-card-header>
-  <img *ngIf="imageUrl" mat-card-image src="{{imageUrl}}" alt="{{imageAltText}}">
+  <img *ngIf="imageUrl" alt="{{imageAltText}}" mat-card-image src="{{imageUrl}}">
   <mat-card-content *ngIf="text">
     <p>
       {{text}}

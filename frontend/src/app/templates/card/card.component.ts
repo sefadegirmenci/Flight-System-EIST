@@ -16,8 +16,11 @@ export class CardComponent implements OnInit {
   imageAltText?: string
   @Input()
   text?: string
+  @Input()
+  link?: string
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

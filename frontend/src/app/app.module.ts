@@ -22,6 +22,8 @@ import {MatInputModule} from "@angular/material/input";
 import {SavedFlightsComponent} from "./routes/saved-flights/saved-flights.component";
 import { FlightCardComponent } from './templates/flight-card/flight-card.component';
 import { InFlightServicesComponent } from './routes/in-flight-services/in-flight-services.component';
+import { EntertainmentComponent } from './routes/in-flight-services/entertainment/entertainment.component';
+import { MenuComponent } from './routes/in-flight-services/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { InFlightServicesComponent } from './routes/in-flight-services/in-flight
     LoginComponent,
     SavedFlightsComponent,
     FlightCardComponent,
-    InFlightServicesComponent
+    InFlightServicesComponent,
+    EntertainmentComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

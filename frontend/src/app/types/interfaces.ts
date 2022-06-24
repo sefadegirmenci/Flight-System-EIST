@@ -3,7 +3,7 @@ export interface CardEntry {
   "subTitle"?: string,
   "imageUrl": string,
   "imageAlt"?: string,
-  "text": string,
+  "text"?: string,
   "routerLink": string
 }
 

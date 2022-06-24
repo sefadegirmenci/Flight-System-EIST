@@ -6,6 +6,8 @@ import {NgModule} from "@angular/core";
 import {ProfileComponent} from "./routes/profile/profile.component";
 import {LoginComponent} from "./routes/login/login.component";
 import {InFlightServicesComponent} from "./routes/in-flight-services/in-flight-services.component";
+import {EntertainmentComponent} from "./routes/in-flight-services/entertainment/entertainment.component";
+import {MenuComponent} from "./routes/in-flight-services/menu/menu.component";
 
 const routes: Routes = [
   {
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'login', component: LoginComponent},
   {path: 'inflight', component: InFlightServicesComponent},
+  {path: 'inflight/entertainment', component: EntertainmentComponent},
+  {path: 'inflight/menu', component: MenuComponent},
   {path: '**', redirectTo: ''}
 ]
 

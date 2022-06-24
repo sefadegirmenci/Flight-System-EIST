@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {inflightEntries} from "../../../assets/inflightEntries";
+import {CardEntry} from "../../types/interfaces";
 
 @Component({
   selector: 'app-in-flight-services',
@@ -6,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./in-flight-services.component.sass']
 })
 export class InFlightServicesComponent implements OnInit {
+  inFlightEntries: CardEntry[] = inflightEntries;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,5 @@
 <div style="display: flex; flex-direction: row; flex-wrap: wrap">
-  <card *ngFor="let card of cards" imageUrl="{{card.imageUrl}}" routerLink="{{card.routerLink}}"
-        subTitle="{{card.subTitle}}"
-        text="{{card.text}}" title="{{card.title}}"></card>
+  <card *ngFor="let card of cards" [imageUrl]="card.imageUrl" [link]="card.routerLink"
+        [subTitle]="card.subTitle"
+        [text]="card.text" [title]="card.title"></card>
 </div>
