@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
+
 
 @Component({
   selector: 'app-search-flights',
@@ -6,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-flights.component.sass']
 })
 export class SearchFlightsComponent implements OnInit {
+  search = new FormGroup({
+    departureAirport: new FormControl(''),
+    arrivalAirport: new FormControl(''),
+    fromDate: new FormControl(''),
+    toDate: new FormControl(''),
+  });
 
-  constructor() { }
+  public airports: string[] = ["MUC", "BER", "VIE"];
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

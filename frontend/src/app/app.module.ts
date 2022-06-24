@@ -25,6 +25,10 @@ import {InFlightServicesComponent} from './routes/in-flight-services/in-flight-s
 import {EntertainmentComponent} from './routes/in-flight-services/entertainment/entertainment.component';
 import {MenuComponent} from './routes/in-flight-services/menu/menu.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import {SearchFlightsComponent} from "./routes/search-flights/search-flights.component";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -36,6 +40,7 @@ import {MatTabsModule} from "@angular/material/tabs";
     ProfileComponent,
     LoginComponent,
     SavedFlightsComponent,
+    SearchFlightsComponent,
     FlightCardComponent,
     InFlightServicesComponent,
     EntertainmentComponent,
@@ -54,7 +59,10 @@ import {MatTabsModule} from "@angular/material/tabs";
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatTabsModule
+    MatTabsModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]
