@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UserService} from "../../services/users/user-service.service";
 
 @Component({
   selector: 'app-saved-flights',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SavedFlightsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit(): void {
   }
 
+  getFlights() {
+    return this.userService.getUser()?.savedFlights;
+  }
 }

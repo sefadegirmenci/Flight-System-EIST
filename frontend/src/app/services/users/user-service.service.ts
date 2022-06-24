@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {User} from "../../types/user";
 import {Router} from "@angular/router";
+import {Flight} from "../../types/flight";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,11 @@ export class UserService {
 
   private static authenticate(username: string, password: string) {
     if (username == "nico" && password == "1234") {
-      return new User("Nico", "Trummer");
+      let user = new User("Nico", "Trummer");
+
+      user.saveFlight(new Flight("BER", "MUC", "Lufthansa"));
+      user.saveFlight(new Flight("MUC", "GRZ", "KLM"));
+      return user;
     }
     return null;
   }

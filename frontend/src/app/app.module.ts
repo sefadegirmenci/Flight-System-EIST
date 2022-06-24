@@ -19,6 +19,8 @@ import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {LoginComponent} from './routes/login/login.component';
 import {MatInputModule} from "@angular/material/input";
+import {SavedFlightsComponent} from "./routes/saved-flights/saved-flights.component";
+import { FlightCardComponent } from './templates/flight-card/flight-card.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import {MatInputModule} from "@angular/material/input";
     OverviewComponent,
     ProfileComponent,
     LoginComponent,
+    SavedFlightsComponent,
+    FlightCardComponent
   ],
   imports: [
     BrowserModule,
