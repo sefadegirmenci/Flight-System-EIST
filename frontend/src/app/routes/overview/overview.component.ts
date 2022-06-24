@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {overviewEntries} from "../../../assets/overviewEntries";
-import {CardEntry} from "../../types";
+import {CardEntry} from "../../types/interfaces";
 
 @Component({
   selector: 'app-overview',
@@ -10,7 +10,8 @@ import {CardEntry} from "../../types";
 export class OverviewComponent implements OnInit {
   public cards: CardEntry[] = overviewEntries;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

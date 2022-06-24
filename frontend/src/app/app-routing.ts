@@ -4,6 +4,7 @@ import {SavedFlightsComponent} from "./routes/saved-flights/saved-flights.compon
 import {OverviewComponent} from "./routes/overview/overview.component";
 import {NgModule} from "@angular/core";
 import {ProfileComponent} from "./routes/profile/profile.component";
+import {LoginComponent} from "./routes/login/login.component";
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
     path: 'saved', component: SavedFlightsComponent
   },
   {path: 'profile', component: ProfileComponent},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'login', component: LoginComponent},
   {path: '**', redirectTo: ''}
 ]
 

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CardEntry} from "../../types";
+import {CardEntry} from "../../types/interfaces";
 
 @Component({
   selector: 'card-collection',
@@ -10,7 +10,8 @@ export class CardCollectionComponent implements OnInit {
   @Input()
   cards!: CardEntry[];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

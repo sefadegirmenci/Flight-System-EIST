@@ -1,4 +1,4 @@
-import {CardEntry} from "../app/types";
+import {CardEntry} from "../app/types/interfaces";
 
 export const overviewEntries: CardEntry[] = [
   {

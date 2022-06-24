@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {Injector, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {MatToolbarModule} from "@angular/material/toolbar";
 
@@ -16,7 +16,9 @@ import {OverviewComponent} from './routes/overview/overview.component';
 import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 import {ProfileComponent} from './routes/profile/profile.component';
 import {MatSelectModule} from "@angular/material/select";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {LoginComponent} from './routes/login/login.component';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import {FormsModule} from "@angular/forms";
     ElevationDirective,
     OverviewComponent,
     ProfileComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,10 +40,18 @@ import {FormsModule} from "@angular/forms";
     RouterModule,
     AppRoutingModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  constructor(private injector: Injector) {
+    AppInjector = this.injector;
+  }
 }
+
+export let AppInjector: Injector;
+

@@ -1,33 +1,31 @@
 import {Injectable} from "@angular/core";
 import {themes} from "../../../assets/themes";
-import {Theme} from "../../types";
+import {Theme} from "../../types/interfaces";
 import {StyleManagerService} from "./style-manager.service";
+import {UserService} from "../users/user-service.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
   private themes: Theme[] = themes;
-  private activeTheme: Theme = themes[0];
 
-  constructor(private styleManager: StyleManagerService) {
+  constructor(private styleManager: StyleManagerService, private userService: UserService) {
   }
 
-  getThemeOptions() {
+  public getThemeOptions() {
     return this.themes;
   }
 
-  setTheme(theme: Theme) {
-    this.activeTheme = theme;
+  public setTheme(theme: Theme) {
+    this.userService.getUser()?.setTheme(theme);
 
     this.styleManager.setStyle("theme", `assets/themes/${theme.value}.css`)
   }
 
-  setDefaultTheme() {
-    this.setTheme(themes[1]);
-  }
-
-  getTheme() {
-    return this.activeTheme;
+  public getTheme() {
+    let theme = this.userService.getUser()?.theme;
+    if (theme) return theme;
+    else return this.themes[1];
   }
 }

@@ -1,4 +1,4 @@
-import {Theme} from "../app/types";
+import {Theme} from "../app/types/interfaces";
 
 export const themes: Theme[] = [
   {

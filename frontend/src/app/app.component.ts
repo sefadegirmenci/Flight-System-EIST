@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ThemeService} from "./services/themes/theme-service.service";
+import {UserService} from "./services/users/user-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -9,10 +11,16 @@ import {ThemeService} from "./services/themes/theme-service.service";
 export class AppComponent implements OnInit {
   title = 'frontend';
 
-  constructor(private themeService: ThemeService) {
+  constructor(private themeService: ThemeService, private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.themeService.setDefaultTheme();
+    if (!this.userService.getUser()) {
+      this.router.navigate(["/", "login"]);
+    }
+  }
+
+  logout() {
+    this.userService.logout();
   }
 }

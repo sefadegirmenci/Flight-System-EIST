@@ -3,13 +3,13 @@
     <span>Flight application</span>
   </button>
   <span class="spacer"></span>
-  <button mat-icon-button class="icon" aria-label="User" routerLink="profile">
+  <button aria-label="User" class="icon" mat-icon-button routerLink="profile">
     <mat-icon>account_circle</mat-icon>
   </button>
-  <button mat-icon-button class="icon" aria-label="LogOut">
+  <button (click)="logout()" aria-label="LogOut" class="icon" mat-icon-button>
     <mat-icon>exit_to_app</mat-icon>
   </button>
 </mat-toolbar>
 <div class="center">
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
