@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {menu} from "../../../../assets/menu";
 
 @Component({
   selector: 'app-menu',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.sass']
 })
 export class MenuComponent implements OnInit {
+  menu = menu;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

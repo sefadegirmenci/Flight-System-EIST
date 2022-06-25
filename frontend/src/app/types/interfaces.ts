@@ -14,3 +14,13 @@ export interface Theme {
   "label": string,
   "value": string
 }
+
+export interface Dish {
+  "name": string,
+  "price": number
+}
+
+export interface MenuCategory {
+  "name": string,
+  "entries": Dish[]
+}

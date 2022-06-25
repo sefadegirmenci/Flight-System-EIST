@@ -3,4 +3,8 @@ body {
   margin: 0;
 }
 
+mat-card {
+  margin: 5px;
+}
+
 /*# sourceMappingURL=styles.css.map */

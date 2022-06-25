@@ -1,1 +1,17 @@
-<p>menu works!</p>
+<mat-card *ngFor="let menuCategory of menu">
+  <mat-card-title>{{menuCategory.name}}</mat-card-title>
+  <mat-card-content>
+    <table style="width: 200px">
+      <tr>
+        <th style="width: 70%">
+        </th>
+        <th style="width: 30%">
+        </th>
+      </tr>
+      <tr *ngFor="let entry of menuCategory.entries">
+        <td>{{entry.name}}</td>
+        <td>{{entry.price | currency : "EUR"}}</td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>

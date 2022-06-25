@@ -17,8 +17,8 @@ export class UserService {
       let user = new User("Nico", "Trummer");
 
       user.saveFlight(new Flight("BER", "MUC", "Lufthansa", new Date("2022-06-22T06:00:00Z"), new Date("2022-06-22T08:00:00Z")));
-      user.saveFlight(new Flight("MUC", "GRZ", "KLM", new Date("2022-06-24T06:00:00Z"), new Date("2022-06-24T20:00:00Z")));
-      user.saveFlight(new Flight("BER", "MUC", "Lufthansa", new Date("2022-06-25T06:00:00Z"), new Date("2022-06-25T08:00:00Z")));
+      user.saveFlight(new Flight("MUC", "GRZ", "KLM", new Date("2022-06-25T06:00:00Z"), new Date("2022-06-25T20:00:00Z")));
+      user.saveFlight(new Flight("BER", "MUC", "Lufthansa", new Date("2022-06-26T06:00:00Z"), new Date("2022-06-26T08:00:00Z")));
       return user;
     }
     return null;
