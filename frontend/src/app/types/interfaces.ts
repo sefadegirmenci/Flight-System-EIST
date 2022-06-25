@@ -24,3 +24,8 @@ export interface MenuCategory {
   "name": string,
   "entries": Dish[]
 }
+
+export interface Movie {
+  "name": string,
+  "thumbnailUrl": string
+}

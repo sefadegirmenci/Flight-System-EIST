@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {movies} from "../../../../assets/movies";
 
 @Component({
   selector: 'app-entertainment',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entertainment.component.sass']
 })
 export class EntertainmentComponent implements OnInit {
+  movies = movies;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
