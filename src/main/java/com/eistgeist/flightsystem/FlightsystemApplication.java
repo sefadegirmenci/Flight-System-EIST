@@ -14,15 +14,5 @@ public class FlightsystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FlightsystemApplication.class, args);
 	}
-	@Bean
-	CommandLineRunner runner(FlightRepository repository) {
-		return args -> {
-			Flight flight = new Flight(
-					55,
-					new Airport("IST","Istanbul"),
-					new Airport("MC","München")
-			);
-			repository.insert(flight);
-		};
-	}
+
 }
