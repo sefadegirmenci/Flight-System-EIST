@@ -13,7 +13,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {ElevationDirective} from "./templates/card/ElevationDirective";
 import {RouterModule} from "@angular/router";
 import {OverviewComponent} from './routes/overview/overview.component';
-import {LocationStrategy, PathLocationStrategy} from "@angular/common";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {ProfileComponent} from './routes/profile/profile.component';
 import {MatSelectModule} from "@angular/material/select";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -64,7 +64,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatDatepickerModule,
     MatNativeDateModule,
   ],
-  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {
