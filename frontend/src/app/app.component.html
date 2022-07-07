@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <button mat-button routerLink="">
+    <span>Flight application</span>
+  </button>
+  <span class="spacer"></span>
+  <button mat-button routerLink="inflight">
+    In-flight services
+  </button>
+  <button aria-label="User" class="icon" mat-icon-button routerLink="profile">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <button (click)="logout()" aria-label="LogOut" class="icon" mat-icon-button>
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="center" style="padding: 5px">
+  <router-outlet></router-outlet>
+</div>
