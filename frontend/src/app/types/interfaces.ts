@@ -17,7 +17,9 @@ export interface Theme {
 
 export interface Dish {
   "name": string,
-  "price": number
+  "price": number,
+  "category": string,
+  "imageUrl": string
 }
 
 export interface MenuCategory {
