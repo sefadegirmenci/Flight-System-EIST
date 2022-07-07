@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("inflight")
+@RestController()
 @AllArgsConstructor
+@RequestMapping("inflight")
 public class InFlightController {
     private InFlightService inFlightService;
 
