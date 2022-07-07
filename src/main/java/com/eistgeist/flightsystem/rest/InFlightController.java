@@ -12,6 +12,7 @@ import java.util.List;
 @RestController()
 @AllArgsConstructor
 @RequestMapping("inflight")
+@CrossOrigin
 public class InFlightController {
     private InFlightService inFlightService;
 
