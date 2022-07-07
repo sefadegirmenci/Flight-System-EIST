@@ -8,6 +8,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.net.URL;
 
+enum Category{
+    FOOD,
+    DRINK
+}
 /**
  * This item can be a food, drink etc.
  */
@@ -19,6 +23,6 @@ public class Item implements Serializable {
     private String name;
     private float price;
     private URL imageURL;
-    private String category;
+    private Category category;
 
 }
