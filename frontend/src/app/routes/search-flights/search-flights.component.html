@@ -44,3 +44,4 @@
     </form>
   </mat-card-content>
 </mat-card>
+<app-flight-card *ngFor="let flight of flights; trackBy: trackFlights" [flight]="flight"></app-flight-card>

@@ -29,3 +29,15 @@ export interface Movie {
   "name": string,
   "thumbnailUrl": string
 }
+
+export interface AirportInterface {
+  "airportCode": string,
+  "city": string
+}
+
+export interface FlightInterface {
+  "id": string,
+  "flightNumber": number,
+  "arrivalAirport": AirportInterface,
+  "departureAirport": AirportInterface
+}

@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Flight} from "../../types/flight";
-import {formatDate} from "@angular/common";
+import {FlightInterface} from "../../types/interfaces";
 
 @Component({
   selector: 'app-flight-card',
@@ -9,7 +8,7 @@ import {formatDate} from "@angular/common";
 })
 export class FlightCardComponent implements OnInit {
   @Input()
-  flight!: Flight;
+  flight!: FlightInterface;
 
   constructor() {
   }
@@ -18,17 +17,17 @@ export class FlightCardComponent implements OnInit {
   }
 
   getTitle() {
-    return this.flight.departureAirport + " - " + this.flight.arrivalAirport;
+    return this.flight.departureAirport.airportCode + " (" + this.flight.departureAirport.city + ") - (" + this.flight.arrivalAirport.airportCode + ") " + this.flight.arrivalAirport.city;
   }
 
   getSubtitle() {
-    return "Airline: " + this.flight.airline;
+    return "Airline: ";
   }
 
 
   getText() {
     let formatString = 'MMMM d, y, h:mm:ss a z';
     let localeString = "en-US";
-    return formatDate(this.flight.departureTime, formatString, localeString) + " - " + formatDate(this.flight.arrivalTime.toLocaleString(), formatString, localeString);
+    return "";
   }
 }

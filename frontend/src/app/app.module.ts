@@ -29,6 +29,7 @@ import {SearchFlightsComponent} from "./routes/search-flights/search-flights.com
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatAutocompleteModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    HttpClientModule
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

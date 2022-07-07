@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {FlightsService} from "../../services/backend/flights.service";
+import {FlightInterface} from "../../types/interfaces";
 
 
 @Component({
@@ -15,12 +17,23 @@ export class SearchFlightsComponent implements OnInit {
     toDate: new FormControl(''),
   });
 
+  flights?: FlightInterface[];
+
   public airports: string[] = ["MUC", "BER", "VIE"];
 
-  constructor() {
+  constructor(private flightService: FlightsService) {
   }
 
   ngOnInit(): void {
+    this.flightService.getFlights().subscribe(data => this.setFlights(data));
   }
 
+  public trackFlights(index: number, item: FlightInterface) {
+    return item.id;
+  }
+
+  private setFlights(data: FlightInterface[]) {
+    this.flights = data;
+    console.log(this.flights)
+  }
 }

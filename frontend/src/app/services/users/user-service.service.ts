@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {User} from "../../types/user";
 import {Router} from "@angular/router";
-import {Flight} from "../../types/flight";
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +15,6 @@ export class UserService {
     if (username == "nico" && password == "1234") {
       let user = new User("Nico", "Trummer");
 
-      user.saveFlight(new Flight("BER", "MUC", "Lufthansa", new Date("2022-06-22T06:00:00Z"), new Date("2022-06-22T08:00:00Z")));
-      user.saveFlight(new Flight("MUC", "GRZ", "KLM", new Date("2022-06-30T06:00:00Z"), new Date("2022-06-30T20:00:00Z")));
-      user.saveFlight(new Flight("BER", "MUC", "Lufthansa", new Date("2022-06-26T06:00:00Z"), new Date("2022-06-26T08:00:00Z")));
       return user;
     }
     return null;

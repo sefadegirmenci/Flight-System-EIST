@@ -4,7 +4,7 @@
   </button>
   <span class="spacer"></span>
   <button *ngFor="let flight of userService.getUser()?.getCurrentFlights()" mat-button routerLink="inflight">
-    In-flight services: {{flight.getAirportConnection()}}
+    In-flight services: {{flight.departureAirport}} - {{flight.arrivalAirport}}
   </button>
   <button aria-label="User" class="icon" mat-icon-button routerLink="profile">
     <mat-icon>account_circle</mat-icon>
