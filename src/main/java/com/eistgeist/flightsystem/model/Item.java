@@ -19,4 +19,6 @@ public class Item implements Serializable {
     private String name;
     private float price;
     private URL imageURL;
+    private String category;
+
 }
