@@ -1,5 +1,6 @@
 package com.eistgeist.flightsystem.service;
 
+import com.eistgeist.flightsystem.exception.ItemNotFoundException;
 import com.eistgeist.flightsystem.model.Item;
 import com.eistgeist.flightsystem.repository.InFlightRepository;
 import lombok.AllArgsConstructor;
@@ -17,5 +18,8 @@ public class InFlightService {
     }
     public Item addItem(Item item) {
         return inFlightRepository.save(item);
+    }
+    public Item searchItem(String name) {
+        return inFlightRepository.findItemByName(name).orElseThrow(() -> new ItemNotFoundException("Item not found"));
     }
 }

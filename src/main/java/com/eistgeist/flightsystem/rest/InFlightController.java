@@ -26,4 +26,10 @@ public class InFlightController {
     public ResponseEntity<Item> addItem(@RequestBody Item item) {
         return ResponseEntity.ok(inFlightService.addItem(item));
     }
+
+    @Operation(summary = "Find item details by its name")
+    @GetMapping("search/{name}")
+    public ResponseEntity<Item> searchItem(@PathVariable String name) {
+        return ResponseEntity.ok(inFlightService.searchItem(name));
+    }
 }
