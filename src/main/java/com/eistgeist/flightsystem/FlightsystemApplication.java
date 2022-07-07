@@ -16,7 +16,7 @@ public class FlightsystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FlightsystemApplication.class, args);
 	}
-	@Bean
+	/*@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
@@ -24,5 +24,5 @@ public class FlightsystemApplication {
 				registry.addMapping("/").allowedOrigins("http://localhost:4200");
 			}
 		};
-	}
+	}*/
 }
