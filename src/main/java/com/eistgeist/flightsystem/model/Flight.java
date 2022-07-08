@@ -1,10 +1,12 @@
 package com.eistgeist.flightsystem.model;
 
 import lombok.Data;
+import org.apache.tomcat.jni.Local;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -20,10 +22,15 @@ public class Flight implements Serializable {
     private int flightNumber;
     private Airport arrivalAirport;
     private Airport departureAirport;
+    private LocalDateTime departureDateTime;
+    private LocalDateTime arrivalDateTime;
 
-    public Flight(int flightNumber, Airport arrivalAirport, Airport departureAirport) {
+    public Flight(int flightNumber, Airport arrivalAirport, Airport departureAirport,
+                  LocalDateTime departureDateTime, LocalDateTime arrivalDateTime) {
         this.flightNumber = flightNumber;
         this.arrivalAirport = arrivalAirport;
         this.departureAirport = departureAirport;
+        this.departureDateTime = departureDateTime;
+        this.arrivalDateTime = arrivalDateTime;
     }
 }
