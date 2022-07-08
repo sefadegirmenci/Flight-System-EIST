@@ -20,8 +20,9 @@ public class Flight implements Serializable {
     @Id
     private String id;
     private int flightNumber;
-    private Airport arrivalAirport;
     private Airport departureAirport;
+
+    private Airport arrivalAirport;
     private LocalDateTime departureDateTime;
     private LocalDateTime arrivalDateTime;
 
