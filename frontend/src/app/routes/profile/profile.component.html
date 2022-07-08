@@ -1,0 +1,9 @@
+<h1>{{getGreeting()}}</h1>
+<form>
+  <mat-form-field>
+    <mat-label>Theme</mat-label>
+    <mat-select (selectionChange)="setTheme(selectedTheme)" [(ngModel)]="selectedTheme" name="theme">
+      <mat-option *ngFor="let theme of themes" [value]="theme">{{theme.label}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>

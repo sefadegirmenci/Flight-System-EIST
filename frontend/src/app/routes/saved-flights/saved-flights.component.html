@@ -1,0 +1,11 @@
+<mat-tab-group>
+  <mat-tab label="Future">
+    <app-flight-card *ngFor="let flight of getFutureFlights()" [flight]="flight"></app-flight-card>
+  </mat-tab>
+  <mat-tab label="Current">
+    <app-flight-card *ngFor="let flight of getCurrentFlights()" [flight]="flight"></app-flight-card>
+  </mat-tab>
+  <mat-tab label="Past">
+    <app-flight-card *ngFor="let flight of getPastFlights()" [flight]="flight"></app-flight-card>
+  </mat-tab>
+</mat-tab-group>

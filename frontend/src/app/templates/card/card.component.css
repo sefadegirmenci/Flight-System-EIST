@@ -1,0 +1,10 @@
+mat-card {
+  max-width: 400px;
+  margin: 10px;
+}
+
+mat-card:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=card.component.css.map */
