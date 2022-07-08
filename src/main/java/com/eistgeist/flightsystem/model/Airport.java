@@ -13,7 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Airport {
     @Id
     private String id;
-    @Indexed(unique = true)
     private String airportCode;
     private String city;
 
