@@ -6,14 +6,18 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @AllArgsConstructor
 @CrossOrigin
+@RequestMapping("airport")
 public class AirportController {
     AirportService airportService;
 
+    @PostMapping("add")
     public ResponseEntity<Airport> addAirport(@RequestBody Airport airport) {
         return ResponseEntity.ok(airportService.addAirport(airport));
     }
