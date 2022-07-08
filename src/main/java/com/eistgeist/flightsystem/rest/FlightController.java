@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class FlightController {
         return ResponseEntity.ok(flightService.getFlights());
     }
 
-    @Operation(summary = "Put a flight")
+    @Operation(summary = "Add a flight")
     @PostMapping("flights")
     public ResponseEntity<Flight> addFlight(@RequestBody Flight flight){
         return new ResponseEntity<>(flightService.addFlight(flight), HttpStatus.CREATED);
@@ -34,9 +35,9 @@ public class FlightController {
 
     /* TODO: Change the search logic*/
     @Operation(summary = "Search a flight by departure and arrival airports")
-    @GetMapping(value = "search/{departureAirport}/{arrivalAirport}",produces = {"application/json"})
-    public ResponseEntity<Flight> searchFlight(@PathVariable Airport departureAirport, @PathVariable Airport arrivalAirport) {
-        return ResponseEntity.ok(flightService.searchFlight(departureAirport, arrivalAirport));
+    @GetMapping(value = "search/{departureAirport}/{arrivalAirport}/{departureDateTime}/{arrivalDateTime}",produces = {"application/json"})
+    public ResponseEntity<Flight> searchFlight(@PathVariable String departureAirportCode, @PathVariable String arrivalAirportCode, @PathVariable LocalDateTime departureDateTime, @PathVariable LocalDateTime arrivalDateTime) {
+        return ResponseEntity.ok(flightService.searchFlight(departureAirportCode, arrivalAirportCode, departureDateTime, arrivalDateTime));
     }
 
 }
