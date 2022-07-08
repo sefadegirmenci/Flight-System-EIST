@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 @CrossOrigin
-@RequestMapping("airport")
+@RequestMapping("airports")
 public class AirportController {
     AirportService airportService;
 
-    @PostMapping("add")
+    @PostMapping()
     public ResponseEntity<Airport> addAirport(@RequestBody Airport airport) {
         return ResponseEntity.ok(airportService.addAirport(airport));
     }
