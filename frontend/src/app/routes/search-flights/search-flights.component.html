@@ -29,34 +29,18 @@
         </mat-autocomplete>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>From</mat-label>
-        <mat-date-range-input [rangePicker]="fromDateRange">
-          <input matStartDate placeholder="Start date">
-          <input matEndDate placeholder="End date">
-        </mat-date-range-input>
-        <mat-hint>DD.MM.YYYY – DD.MM.YYYY</mat-hint>
-        <mat-datepicker-toggle [for]="fromDateRange" matSuffix></mat-datepicker-toggle>
-        <mat-date-range-picker #fromDateRange>
-          <mat-date-range-picker-actions>
-            <button mat-button matDateRangePickerCancel>Cancel</button>
-            <button color="primary" mat-raised-button matDateRangePickerApply>Apply</button>
-          </mat-date-range-picker-actions>
-        </mat-date-range-picker>
+        <mat-label>From date</mat-label>
+        <input [matDatepicker]="fromDate" formControlName="fromDate" matInput>
+        <mat-hint>DD.MM.YYYY</mat-hint>
+        <mat-datepicker-toggle [for]="fromDate" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #fromDate></mat-datepicker>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <mat-label>To</mat-label>
-        <mat-date-range-input [rangePicker]="toDateRange">
-          <input matStartDate placeholder="Start date">
-          <input matEndDate placeholder="End date">
-        </mat-date-range-input>
-        <mat-hint>DD.MM.YYYY – DD.MM.YYYY</mat-hint>
-        <mat-datepicker-toggle [for]="toDateRange" matSuffix></mat-datepicker-toggle>
-        <mat-date-range-picker #toDateRange>
-          <mat-date-range-picker-actions>
-            <button mat-button matDateRangePickerCancel>Cancel</button>
-            <button color="primary" mat-raised-button matDateRangePickerApply>Apply</button>
-          </mat-date-range-picker-actions>
-        </mat-date-range-picker>
+        <mat-label>To date</mat-label>
+        <input [matDatepicker]="toDate" formControlName="toDate" matInput>
+        <mat-hint>DD.MM.YYYY</mat-hint>
+        <mat-datepicker-toggle [for]="toDate" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #toDate></mat-datepicker>
       </mat-form-field>
       <div class="button">
         <button (click)="executeSearch()" mat-button type="submit">Search</button>

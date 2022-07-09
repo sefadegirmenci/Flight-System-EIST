@@ -56,7 +56,10 @@ export class SearchFlightsComponent implements OnInit {
   }
 
   public executeSearch() {
-    console.log(this.search.controls["departureAirport"]);
+    console.log(this.search.controls["departureAirport"].value);
+    console.log(this.search.controls["arrivalAirport"].value);
+    console.log(this.search.controls["fromDate"].value);
+    console.log(this.search.controls["toDate"].value);
   }
 
   public getAirport(airportCode: string) {
