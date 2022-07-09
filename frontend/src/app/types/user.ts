@@ -1,4 +1,4 @@
-import {FlightInterface, Theme} from "./interfaces";
+import {Flight, Theme} from "./interfaces";
 import {ThemeService} from "../services/themes/theme-service.service";
 import {AppInjector} from "../app.module";
 
@@ -24,13 +24,13 @@ export class User {
     return this._lastName;
   }
 
-  private _savedFlights: FlightInterface[] = [];
+  private _savedFlights: Flight[] = [];
 
-  get savedFlights(): FlightInterface[] {
+  get savedFlights(): Flight[] {
     return this._savedFlights;
   }
 
-  public saveFlight(flight: FlightInterface) {
+  public saveFlight(flight: Flight) {
     this._savedFlights.push(flight);
   }
 
@@ -50,7 +50,7 @@ export class User {
     return this.getFlights(flight => false);
   }
 
-  private getFlights(filter: (flight: FlightInterface) => boolean) {
+  private getFlights(filter: (flight: Flight) => boolean) {
     return this.savedFlights.filter(filter);
   }
 }

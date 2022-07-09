@@ -6,42 +6,46 @@
     <form [formGroup]="search">
       <mat-form-field appearance="outline">
         <mat-label>From where?</mat-label>
-        <input [matAutocomplete]="auto"
+        <input [matAutocomplete]="arr"
                formControlName="departureAirport"
                matInput
                type="text">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let airport of airports" [value]="airport">{{airport}}</mat-option>
+        <mat-autocomplete #arr="matAutocomplete">
+          <mat-option *ngFor="let airport of filteredDepartureAirports | async"
+                      [value]="airportToString(airport)">{{airportToString(airport)}}
+          </mat-option>
         </mat-autocomplete>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>To where?</mat-label>
-        <input [matAutocomplete]="auto"
+        <input [matAutocomplete]="dep"
                formControlName="arrivalAirport"
                matInput
                type="text">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let airport of airports" [value]="airport">{{airport}}</mat-option>
+        <mat-autocomplete #dep="matAutocomplete">
+          <mat-option *ngFor="let airport of filteredArrivalAirports | async"
+                      [value]="airportToString(airport)">{{airportToString(airport)}}
+          </mat-option>
         </mat-autocomplete>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>From date</mat-label>
-        <input [matDatepicker]="fromTime" formControlName="fromDate" matInput>
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle [for]="fromTime" matSuffix></mat-datepicker-toggle>
-        <mat-datepicker #fromTime></mat-datepicker>
+        <input [matDatepicker]="fromDate" formControlName="fromDate" matInput>
+        <mat-hint>DD.MM.YYYY</mat-hint>
+        <mat-datepicker-toggle [for]="fromDate" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #fromDate></mat-datepicker>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>To date</mat-label>
-        <input [matDatepicker]="toTime" formControlName="toDate" matInput>
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle [for]="toTime" matSuffix></mat-datepicker-toggle>
-        <mat-datepicker #toTime></mat-datepicker>
+        <input [matDatepicker]="toDate" formControlName="toDate" matInput>
+        <mat-hint>DD.MM.YYYY</mat-hint>
+        <mat-datepicker-toggle [for]="toDate" matSuffix></mat-datepicker-toggle>
+        <mat-datepicker #toDate></mat-datepicker>
       </mat-form-field>
       <div class="button">
-        <button mat-button type="submit">Search</button>
+        <button (click)="executeSearch()" mat-button type="submit">Search</button>
       </div>
     </form>
   </mat-card-content>
 </mat-card>
-<app-flight-card *ngFor="let flight of flights; trackBy: trackFlights" [flight]="flight"></app-flight-card>
+<app-flight-card *ngFor="let flight of flights; trackBy: track" [flight]="flight"></app-flight-card>

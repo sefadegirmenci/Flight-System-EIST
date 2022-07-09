@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FlightInterface} from "../../types/interfaces";
+import {Flight} from "../../types/interfaces";
 
 @Component({
   selector: 'app-flight-card',
@@ -8,7 +8,7 @@ import {FlightInterface} from "../../types/interfaces";
 })
 export class FlightCardComponent implements OnInit {
   @Input()
-  flight!: FlightInterface;
+  flight!: Flight;
 
   constructor() {
   }
