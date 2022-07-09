@@ -28,7 +28,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {SearchFlightsComponent} from "./routes/search-flights/search-flights.component";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {MatNativeDateModule} from "@angular/material/core";
+import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
@@ -66,7 +66,10 @@ import {HttpClientModule} from "@angular/common/http";
     MatNativeDateModule,
     HttpClientModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, {
+    provide: MAT_DATE_LOCALE,
+    useValue: 'de-DE'
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

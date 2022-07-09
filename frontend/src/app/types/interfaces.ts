@@ -28,19 +28,21 @@ export interface MenuCategory {
 }
 
 export interface Movie {
+  "id": string,
   "name": string,
   "description": string,
   "thumbnailURL": string
 }
 
-export interface AirportInterface {
+export interface Airport {
+  "id": string,
   "airportCode": string,
   "city": string
 }
 
-export interface FlightInterface {
+export interface Flight {
   "id": string,
   "flightNumber": number,
-  "arrivalAirport": AirportInterface,
-  "departureAirport": AirportInterface
+  "arrivalAirport": Airport,
+  "departureAirport": Airport
 }
