@@ -29,7 +29,8 @@ export interface MenuCategory {
 
 export interface Movie {
   "name": string,
-  "thumbnailUrl": string
+  "description": string,
+  "thumbnailURL": string
 }
 
 export interface AirportInterface {
