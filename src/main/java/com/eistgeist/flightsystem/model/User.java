@@ -15,16 +15,13 @@ public class User {
     @Id
     private String id;
     //@Indexed(unique = true)
-    @JsonProperty(value ="USERNAME",required = true)
     private String userName;
-    @JsonProperty(value ="PASSWORD",required = true)
     private String password;
-    @JsonProperty(value ="COUPONS",required = false)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<Coupon> coupons;
-    @JsonProperty(value ="POILIST",required = false)
-
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<POI> POIList;
-    @JsonProperty(value ="JOURNEYS",required = false)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Journey journeys; /* The flights that user saved */
 
     public User(String userName, String password) {
