@@ -1,5 +1,6 @@
 package com.eistgeist.flightsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -14,12 +15,16 @@ public class User {
     @Id
     private String id;
     //@Indexed(unique = true)
+    @JsonProperty(value ="USERNAME",required = true)
     private String userName;
+    @JsonProperty(value ="PASSWORD",required = true)
     private String password;
+    @JsonProperty(value ="COUPONS",required = false)
     private List<Coupon> coupons;
-    private List<POI> POIList;
+    @JsonProperty(value ="POILIST",required = false)
 
-    /* TODO: Consider this to change journey instead of flight */
+    private List<POI> POIList;
+    @JsonProperty(value ="JOURNEYS",required = false)
     private Journey journeys; /* The flights that user saved */
 
     public User(String userName, String password) {
