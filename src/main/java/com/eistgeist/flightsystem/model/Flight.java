@@ -1,5 +1,6 @@
 package com.eistgeist.flightsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.apache.tomcat.jni.Local;
 import org.springframework.data.annotation.Id;
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
 public class Flight implements Serializable {
     /* Not all the fields are added so that we first have a simpler code */
     @Id
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String id;
     private int flightNumber;
     private Airport departureAirport;

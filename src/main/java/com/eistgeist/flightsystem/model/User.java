@@ -13,6 +13,7 @@ import java.util.List;
 @Document
 public class User {
     @Id
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String id;
     //@Indexed(unique = true)
     private String userName;
