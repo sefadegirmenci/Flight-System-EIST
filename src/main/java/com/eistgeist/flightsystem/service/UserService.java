@@ -15,8 +15,7 @@ public class UserService {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
-    public User addUser(String userName, String password) {
-        User user = new User(userName,password);
+    public User addUser(User user) {
         return userRepository.save(user);
     }
 }

@@ -19,9 +19,9 @@ public class UserController {
 
     @PostMapping("")
     @Operation(description = "Add a user and its password")
-    public ResponseEntity<User> addUser(@RequestBody String userName, String password) {
-        if(userName.isEmpty()) return (ResponseEntity<User>) ResponseEntity.badRequest();
-        return ResponseEntity.ok(userService.addUser(userName,password));
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        if(user == null) return (ResponseEntity<User>) ResponseEntity.badRequest();
+        return ResponseEntity.ok(userService.addUser(user));
     }
 
     @GetMapping("")
