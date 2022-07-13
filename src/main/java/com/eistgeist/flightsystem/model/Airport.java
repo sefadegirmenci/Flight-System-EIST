@@ -1,5 +1,6 @@
 package com.eistgeist.flightsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Airport {
     @Id
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String id;
     private String airportCode;
     private String city;
