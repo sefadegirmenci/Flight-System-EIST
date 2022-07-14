@@ -23,14 +23,14 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<POI> POIList;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Journey journeys; /* The flights that user saved */
+    private List<Journey> journeys; /* The flights that user saved */
 
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
         this.coupons = new ArrayList<>();
         this.POIList = new ArrayList<>();
-        this.journeys = new Journey();
+        this.journeys = new ArrayList<Journey>();
     }
     /* TODO: Add these use cases to the service layer
     public void savePOI(POI poi) {
