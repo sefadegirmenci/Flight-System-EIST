@@ -26,11 +26,8 @@ public class FlightService {
         return flightRepository.findAll();
     }
     public List<Flight> searchFlight(String departureAirportCode, String arrivalAirportCode, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime) {
-        Airport departureAirport = airportRepository.findAirportByAirportCodeIgnoreCase(departureAirportCode)
-                .orElseThrow(() -> new AirportNotFoundException("Departure airport not found"));
-        Airport arrivalAirport = airportRepository.findAirportByAirportCodeIgnoreCase(arrivalAirportCode)
-                .orElseThrow(() -> new AirportNotFoundException("Arrival airport not found"));
-        return flightRepository.findFlightsByArrivalAirportIgnoreCaseAndDepartureAirportIgnoreCaseAndDepartureDateTimeGreaterThanEqualAndArrivalDateTimeLessThanEqual(departureAirport, arrivalAirport, departureDateTime, arrivalDateTime)
+        return flightRepository.findFlightsByDepartureAirportAirportCodeIgnoreCaseAndArrivalAirportAirportCodeIgnoreCaseAndDepartureDateTimeGreaterThanEqualAndArrivalDateTimeLessThanEqual
+                        (departureAirportCode, arrivalAirportCode, departureDateTime, arrivalDateTime)
                 .orElseThrow(() -> new FlightNotFoundException("Flight not found"));
     }
 
