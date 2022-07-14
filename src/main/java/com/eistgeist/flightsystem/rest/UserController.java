@@ -31,6 +31,9 @@ public class UserController {
         return ResponseEntity.ok(userService.getUsers());
     }
 
-
+    @PostMapping("addJourney/{username}")
+    public ResponseEntity<User> addJourney(@RequestBody Journey journey, @PathVariable String username) {
+        return ResponseEntity.ok(userService.addJourney(journey, username));
+    }
 
 }
