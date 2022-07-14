@@ -6,9 +6,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 public interface FlightRepository
         extends MongoRepository<Flight,String> {
-    Optional<Flight> findFlightsByArrivalAirportIgnoreCaseAndDepartureAirportIgnoreCaseAndDepartureDateTimeGreaterThanEqualAndArrivalDateTimeLessThanEqual (Airport arrivalAirport, Airport departureAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime);
+    Optional<List<Flight>> findFlightsByArrivalAirportIgnoreCaseAndDepartureAirportIgnoreCaseAndDepartureDateTimeGreaterThanEqualAndArrivalDateTimeLessThanEqual (Airport arrivalAirport, Airport departureAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime);
 }
