@@ -2,6 +2,7 @@ package com.eistgeist.flightsystem.service;
 
 import com.eistgeist.flightsystem.exception.UserNotFoundException;
 import com.eistgeist.flightsystem.model.Journey;
+import com.eistgeist.flightsystem.model.JourneyList;
 import com.eistgeist.flightsystem.model.User;
 import com.eistgeist.flightsystem.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -26,8 +27,8 @@ public class UserService {
         User user = userRepository.findUserByUserNameIgnoreCase(userName).orElseThrow(() -> new UserNotFoundException("User not found"));
         /* TO-DO: Uncomment if the users are duplicated */
         //userRepository.delete(user);
-        List<Journey> journeys = user.getJourneys();
-        journeys.add(journey);
+        JourneyList journeys = user.getJourneys();
+        journeys.insertJourney(journey);
         user.setJourneys(journeys);
         return userRepository.save(user);
     }
