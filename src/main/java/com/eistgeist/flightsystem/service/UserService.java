@@ -18,7 +18,6 @@ import java.util.Map;
 @AllArgsConstructor
 public class UserService {
     private UserRepository userRepository;
-    Logger logger = LoggerFactory.getLogger(UserService.class);
 
     public List<User> getUsers() {
         return userRepository.findAll();
@@ -33,7 +32,6 @@ public class UserService {
         JourneyList journeys = user.getJourneys();
         journeys.insertJourney(journey);
         user.setJourneys(journeys);
-        logger.info("User is " + user);
         return userRepository.save(user);
     }
 }
