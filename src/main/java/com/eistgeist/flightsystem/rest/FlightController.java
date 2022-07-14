@@ -6,6 +6,7 @@ import com.eistgeist.flightsystem.service.FlightService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,7 @@ public class FlightController {
     /* TODO: Change the search logic*/
     @Operation(summary = "Search a flight by departure and arrival airports")
     @GetMapping(value = "search/{departureAirportCode}/{arrivalAirportCode}/{departureDateTime}/{arrivalDateTime}",produces = {"application/json"})
-    public ResponseEntity<List<Flight>> searchFlight(@PathVariable String departureAirportCode, @PathVariable String arrivalAirportCode, @PathVariable LocalDateTime departureDateTime, @PathVariable LocalDateTime arrivalDateTime) {
+    public ResponseEntity<List<Flight>> searchFlight(@PathVariable String departureAirportCode, @PathVariable String arrivalAirportCode, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDateTime departureDateTime, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDateTime arrivalDateTime) {
         return ResponseEntity.ok(flightService.searchFlight(departureAirportCode, arrivalAirportCode, departureDateTime, arrivalDateTime));
     }
 
