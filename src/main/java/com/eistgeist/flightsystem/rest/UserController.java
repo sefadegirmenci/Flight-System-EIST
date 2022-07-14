@@ -1,5 +1,6 @@
 package com.eistgeist.flightsystem.rest;
 
+import com.eistgeist.flightsystem.model.Journey;
 import com.eistgeist.flightsystem.model.User;
 import com.eistgeist.flightsystem.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,4 +30,10 @@ public class UserController {
     public ResponseEntity<List<User>> getUsers() {
         return ResponseEntity.ok(userService.getUsers());
     }
+
+    @PostMapping("addJourney/{username}")
+    public ResponseEntity<User> addJourney(@RequestBody Journey journey, @PathVariable String username) {
+        return ResponseEntity.ok(userService.addJourney(journey, username));
+    }
+
 }
