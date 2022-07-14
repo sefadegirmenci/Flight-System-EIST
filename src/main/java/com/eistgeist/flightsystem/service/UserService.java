@@ -6,6 +6,8 @@ import com.eistgeist.flightsystem.model.JourneyList;
 import com.eistgeist.flightsystem.model.User;
 import com.eistgeist.flightsystem.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
@@ -16,6 +18,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class UserService {
     private UserRepository userRepository;
+    Logger logger = LoggerFactory.getLogger(UserService.class);
 
     public List<User> getUsers() {
         return userRepository.findAll();
@@ -30,6 +33,7 @@ public class UserService {
         JourneyList journeys = user.getJourneys();
         journeys.insertJourney(journey);
         user.setJourneys(journeys);
+        logger.info("User is " + user);
         return userRepository.save(user);
     }
 }
