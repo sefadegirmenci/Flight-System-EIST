@@ -38,7 +38,7 @@ public class FlightController {
     }
 
     /* TODO: Change the search logic*/
-    @Operation(summary = "Search a flight by departure and arrival airports")
+    @Operation(summary = "Search a flight by all the fields")
     @GetMapping(value = "search/{departureAirportCode}/{arrivalAirportCode}/{departureDateTimeString}/{arrivalDateTimeString}",produces = {"application/json"})
     public ResponseEntity<List<Flight>> searchFlight(@PathVariable(required = false) String departureAirportCode,
                                                      @PathVariable(required = false) String arrivalAirportCode,
@@ -50,6 +50,13 @@ public class FlightController {
         LocalDateTime departureDateTime = departureDate.atStartOfDay();
         LocalDateTime arrivalDateTime = arrivalDate.atStartOfDay();
         return ResponseEntity.ok(flightService.searchFlight(departureAirportCode, arrivalAirportCode, departureDateTime, arrivalDateTime));
+    }
+
+    @Operation(summary = "Search a flight by departure and arrival airports")
+    @GetMapping(value = "search/{departureAirportCode}/{arrivalAirportCode}",produces = {"application/json"})
+    public ResponseEntity<List<Flight>> searchFlightByAirports(@PathVariable(required = false) String departureAirportCode,
+                                                     @PathVariable(required = false) String arrivalAirportCode) {
+        return ResponseEntity.ok(flightService.searchFlightByAirports(departureAirportCode, arrivalAirportCode));
     }
 
 

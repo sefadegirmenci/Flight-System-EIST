@@ -31,6 +31,11 @@ public class FlightService {
                 .orElseThrow(() -> new FlightNotFoundException("Flight not found"));
     }
 
+    public List<Flight> searchFlightByAirports(String departureAirportCode, String arrivalAirportCode) {
+        return flightRepository.findFlightsByDepartureAirportAirportCodeIgnoreCaseAndArrivalAirportAirportCodeIgnoreCase(departureAirportCode, arrivalAirportCode)
+                .orElseThrow(() -> new FlightNotFoundException("Flight not found"));
+    }
+
 
     public Flight addFlight(Flight flight) {
         return flightRepository.save(flight);
