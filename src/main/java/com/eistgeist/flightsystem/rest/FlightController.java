@@ -5,13 +5,16 @@ import com.eistgeist.flightsystem.model.Flight;
 import com.eistgeist.flightsystem.service.FlightService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,11 +39,16 @@ public class FlightController {
 
     /* TODO: Change the search logic*/
     @Operation(summary = "Search a flight by departure and arrival airports")
-    @GetMapping(value = "search/{departureAirportCode}/{arrivalAirportCode}/{departureDateTime}/{arrivalDateTime}",produces = {"application/json"})
+    @GetMapping(value = "search/{departureAirportCode}/{arrivalAirportCode}/{departureDateTimeString}/{arrivalDateTimeString}",produces = {"application/json"})
     public ResponseEntity<List<Flight>> searchFlight(@PathVariable(required = false) String departureAirportCode,
                                                      @PathVariable(required = false) String arrivalAirportCode,
-                                                     @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME, pattern = "yyyy-MM-dd") LocalDateTime departureDateTime,
-                                                     @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME, pattern = "yyyy-MM-dd") LocalDateTime arrivalDateTime) {
+                                                     @PathVariable String departureDateTimeString,
+                                                     @PathVariable String arrivalDateTimeString) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate departureDate = LocalDate.parse(departureDateTimeString, formatter);
+        LocalDate arrivalDate = LocalDate.parse(arrivalDateTimeString,formatter);
+        LocalDateTime departureDateTime = departureDate.atStartOfDay();
+        LocalDateTime arrivalDateTime = arrivalDate.atStartOfDay();
         return ResponseEntity.ok(flightService.searchFlight(departureAirportCode, arrivalAirportCode, departureDateTime, arrivalDateTime));
     }
 
