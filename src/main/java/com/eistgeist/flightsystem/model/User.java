@@ -25,6 +25,9 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private JourneyList journeys; /* The flights that user saved */
 
+    public User() {
+    }
+
     public User(String userName, String password) {
         this.userName = userName;
         this.password = password;
