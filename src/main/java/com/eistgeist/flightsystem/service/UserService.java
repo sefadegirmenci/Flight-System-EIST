@@ -25,7 +25,7 @@ public class UserService {
     public User addUser(User user) {
         return userRepository.save(user);
     }
-    public User addJourney(Journey journey, String userName) {
+    public User addJourney(String journey, String userName) {
         User user = userRepository.findUserByUserNameIgnoreCase(userName).orElseThrow(() -> new UserNotFoundException("User not found"));
         /* TO-DO: Uncomment if the users are duplicated */
         //userRepository.delete(user);

@@ -23,7 +23,7 @@ public class UserController {
     @Operation(description = "Add a user and its password")
     public ResponseEntity<User> addUser(@RequestBody User user) {
         if(user == null) return (ResponseEntity<User>) ResponseEntity.badRequest();
-        return new ResponseEntity<User>(userService.addUser(user), HttpStatus.CREATED);
+        return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
     }
 
     @GetMapping("")
@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping("addJourney/{username}")
-    public ResponseEntity<User> addJourney(@RequestBody Journey journey, @PathVariable String username) {
+    public ResponseEntity<User> addJourney(@RequestBody String journey, @PathVariable String username) {
         return ResponseEntity.ok(userService.addJourney(journey, username));
     }
 
