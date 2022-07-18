@@ -31,6 +31,12 @@ public class UserService {
         //userRepository.delete(user);
         JourneyList journeys = user.getJourneys();
 
+        if(journey == null) {
+            System.out.println("Journeys is null");
+        }
+        if(journeys.getJourneyList() == null) {
+            System.out.println("List of journey is null");
+        }
 
         user.setJourneys(journeys);
         return userRepository.save(user);
