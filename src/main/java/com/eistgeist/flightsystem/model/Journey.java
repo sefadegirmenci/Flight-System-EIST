@@ -17,6 +17,6 @@ public class Journey {
     private List<String> journey;
 
     public Journey() {
-        this.journey = new ArrayList<String>();
+        this.journey = new ArrayList<>();
     }
 }
