@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping("addJourney/{username}")
-    public ResponseEntity<User> addJourney(@RequestBody String journey, @PathVariable String username) {
+    public ResponseEntity<User> addJourney(@RequestBody Journey journey, @PathVariable String username) {
         return ResponseEntity.ok(userService.addJourney(journey, username));
     }
 

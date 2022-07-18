@@ -10,14 +10,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class JourneyList {
-    private List<String> journeyList; // List of flight numbers
+    private List<Journey> journeyList; // List of flight numbers
 
     public JourneyList() {
         this.journeyList = new ArrayList<>();
     }
 
-    public boolean insertJourney(String journey) {
-        return journeyList.add(journey);
-    }
 }
 

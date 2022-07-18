@@ -14,9 +14,9 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Journey {
-    private List<Flight> journey;
+    private List<String> journey;
 
     public Journey() {
-        this.journey = new ArrayList<Flight>();
+        this.journey = new ArrayList<String>();
     }
 }
