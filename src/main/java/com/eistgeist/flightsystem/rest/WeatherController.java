@@ -1,5 +1,6 @@
 package com.eistgeist.flightsystem.rest;
 
+import com.eistgeist.flightsystem.model.Weather;
 import com.eistgeist.flightsystem.service.WeatherService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,10 +17,10 @@ public class WeatherController {
     private WeatherService weatherService;
 
     @GetMapping("weather/{cityName}")
-    public ResponseEntity<Float> getWeather(@PathVariable String cityName) {
-        float temperature = weatherService.getWeather(cityName);
-        if(temperature == 0) return new ResponseEntity<>((float)0, HttpStatus.valueOf(402));
-        return ResponseEntity.ok(temperature);
+    public ResponseEntity<Weather> getWeather(@PathVariable String cityName) {
+        Weather weather = weatherService.getWeather(cityName);
+        if(weather == null) return new ResponseEntity<>(null, HttpStatus.valueOf(402));
+        return ResponseEntity.ok(weather);
     }
 
 }

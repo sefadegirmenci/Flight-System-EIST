@@ -1,6 +1,8 @@
 package com.eistgeist.flightsystem.service;
 
+import com.eistgeist.flightsystem.model.Weather;
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,8 +19,7 @@ import java.util.StringTokenizer;
 @AllArgsConstructor
 public class WeatherService {
 
-    public float getWeather(String cityName) {
-        float temperature = 0;
+    public Weather getWeather(String cityName) {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
@@ -28,20 +29,12 @@ public class WeatherService {
                     .build();
             HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
             String weatherResponse = response.body().toString();
-            StringTokenizer tokenizer = new StringTokenizer(weatherResponse,", :");
-            while(tokenizer.hasMoreTokens()) {
-                String nextToken = tokenizer.nextToken();
-                if(nextToken.contains("temp_c")) {
-                    System.out.println(nextToken);
-                    String temperatureString = tokenizer.nextToken();
-                    temperature= Float.parseFloat(temperatureString);
-                }
-            }
+            JsonNode node = Json.parse(weatherResponse);
+            return Json.fromJson(node.get("current"), Weather.class);
         }
         catch (Exception e) {
-        e.printStackTrace();
-        return temperature;
+            e.printStackTrace();
         }
-        return temperature;
+        return null;
     }
 }
