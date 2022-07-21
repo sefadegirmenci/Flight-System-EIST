@@ -34,4 +34,9 @@ public class UserService {
         user.setJourneys(journeys);
         return userRepository.save(user);
     }
+
+    public List<Journey> getJourneys(String userName) {
+        User user = userRepository.findUserByUserNameIgnoreCase(userName).orElseThrow(() -> new IllegalStateException("User not found"));
+        return user.getJourneys();
+    }
 }

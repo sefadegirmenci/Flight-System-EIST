@@ -22,7 +22,7 @@ public class UserController {
     @PostMapping("")
     @Operation(description = "Add a user and its password")
     public ResponseEntity<User> addUser(@RequestBody User user) {
-        if(user == null) return (ResponseEntity<User>) ResponseEntity.badRequest();
+        if(user == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
     }
 
@@ -32,9 +32,14 @@ public class UserController {
         return ResponseEntity.ok(userService.getUsers());
     }
 
-    @PostMapping("addJourney/{username}")
+    @PostMapping("{username}/addJourney")
     public ResponseEntity<User> addJourney(@RequestBody Journey journey, @PathVariable String username) {
         return ResponseEntity.ok(userService.addJourney(journey, username));
+    }
+
+    @GetMapping("{username}/journeys")
+    public ResponseEntity<List<Journey>> getJourneys(@PathVariable String username) {
+        return ResponseEntity.ok(userService.getJourneys(username));
     }
 
 }
