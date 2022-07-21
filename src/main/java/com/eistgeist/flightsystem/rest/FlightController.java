@@ -40,7 +40,7 @@ public class FlightController {
     }
 
     /* TODO: Change the search logic*/
-    @Operation(summary = "Search flights by all the fields")
+    @Operation(summary = "Search flights by user specific queries")
     @GetMapping(value = "search",produces = {"application/json"})
     public ResponseEntity<List<Flight>> searchFlights(@RequestParam(value = "departureCode", required = false) Optional<String> departureAirportCode,
                                                       @RequestParam(value = "arrivalCode", required = false) Optional<String> arrivalAirportCode,
@@ -79,7 +79,11 @@ public class FlightController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-
+    @Operation(summary = "Search a flight by ID")
+    @GetMapping(value = "search/{id}",produces = {"application/json"})
+    public ResponseEntity<Flight> searchFlightByID(@PathVariable String id) {
+        return ResponseEntity.ok(flightService.searchFlightById(id));
+    }
 
 
 

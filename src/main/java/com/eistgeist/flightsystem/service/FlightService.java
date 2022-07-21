@@ -56,7 +56,10 @@ public class FlightService {
         return flightRepository.findFlightsByArrivalDateTimeLessThanEqual(arrivalDateTime)
                 .orElseThrow(() -> new FlightNotFoundException("Flight not found"));
     }
-
+    public Flight searchFlightById(String id) {
+        return flightRepository.findById(id)
+                .orElseThrow(() -> new FlightNotFoundException("Flight not found"));
+    }
 
     public Flight addFlight(Flight flight) {
         return flightRepository.save(flight);
