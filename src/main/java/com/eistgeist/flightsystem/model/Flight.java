@@ -36,4 +36,5 @@ public class Flight implements Serializable {
         this.departureDateTime = departureDateTime;
         this.arrivalDateTime = arrivalDateTime;
     }
+    public Flight(){}
 }

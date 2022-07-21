@@ -18,4 +18,6 @@ public class Airport {
         this.airportCode = airportCode;
         this.city = city;
     }
+
+    public Airport(){}
 }
