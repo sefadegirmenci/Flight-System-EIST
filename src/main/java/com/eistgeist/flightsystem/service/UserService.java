@@ -2,6 +2,7 @@ package com.eistgeist.flightsystem.service;
 
 import com.eistgeist.flightsystem.exception.FlightNotFoundException;
 import com.eistgeist.flightsystem.model.Journey;
+import com.eistgeist.flightsystem.model.POI;
 import com.eistgeist.flightsystem.model.User;
 import com.eistgeist.flightsystem.repository.FlightRepository;
 import com.eistgeist.flightsystem.repository.UserRepository;
@@ -45,4 +46,21 @@ public class UserService {
         User user = userRepository.findUserByUserNameIgnoreCase(userName).orElseThrow(() -> new IllegalStateException("User not found"));
         return user.getJourneys();
     }
+
+    public List<POI> getPOIs(String userName) {
+        User user = userRepository.findUserByUserNameIgnoreCase(userName).orElseThrow(() -> new IllegalStateException("User not found"));
+        return user.getPOIList();
+    }
+    public User addPOI(POI poi, String userName) {
+        User user = userRepository.findUserByUserNameIgnoreCase(userName).orElseThrow(() -> new IllegalStateException("User not found"));
+        List<POI> pois = user.getPOIList();
+        if (pois == null) {
+            pois = new ArrayList<>();
+        }
+        pois.add(poi);
+        user.setPOIList(pois);
+        return userRepository.save(user);
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package com.eistgeist.flightsystem.rest;
 
 import com.eistgeist.flightsystem.model.Journey;
+import com.eistgeist.flightsystem.model.POI;
 import com.eistgeist.flightsystem.model.User;
 import com.eistgeist.flightsystem.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,19 +26,30 @@ public class UserController {
         if(user == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(userService.addUser(user), HttpStatus.CREATED);
     }
-
     @GetMapping("")
     @Operation(description = "Get users")
     public ResponseEntity<List<User>> getUsers() {
         return ResponseEntity.ok(userService.getUsers());
     }
     @GetMapping("{username}/journeys")
+    @Operation(description = "Get journeys of the user")
     public ResponseEntity<List<Journey>> getJourneys(@PathVariable String username) {
         return ResponseEntity.ok(userService.getJourneys(username));
     }
-    @PostMapping("{username}/addJourney")
+    @PostMapping("{username}/journeys")
+    @Operation(description = "Add a journey to the user")
     public ResponseEntity<User> addJourney(@RequestBody Journey journey, @PathVariable String username) {
         return ResponseEntity.ok(userService.addJourney(journey, username));
+    }
+    @GetMapping("{username}/pois")
+    @Operation(description = "Get POIs of the user")
+    public ResponseEntity<List<POI>> getPOIs(@PathVariable String username) {
+        return ResponseEntity.ok(userService.getPOIs(username));
+    }
+    @PostMapping("{username}/pois")
+    @Operation(description = "Add a journey to the user")
+    public ResponseEntity<User> addPOI(@RequestBody POI poi, @PathVariable String username) {
+        return ResponseEntity.ok(userService.addPOI(poi, username));
     }
 
 
