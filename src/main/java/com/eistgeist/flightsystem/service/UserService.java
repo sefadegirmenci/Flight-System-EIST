@@ -27,6 +27,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User searchUser(String userName) {
+        return userRepository.findUserByUserNameIgnoreCase(userName).orElseThrow(() -> new IllegalStateException("User not found"));
+    }
+
     public User addJourney(Journey journey, String userName) {
         List<String> flightIDs = journey.getJourney();
         for(String flightID: flightIDs) {

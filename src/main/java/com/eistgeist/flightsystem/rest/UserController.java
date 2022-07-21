@@ -31,6 +31,11 @@ public class UserController {
     public ResponseEntity<List<User>> getUsers() {
         return ResponseEntity.ok(userService.getUsers());
     }
+    @GetMapping("{username}")
+    @Operation(description = "Search a user")
+    public ResponseEntity<User> searchUser(@PathVariable String username) {
+        return ResponseEntity.ok(userService.searchUser(username));
+    }
     @GetMapping("{username}/journeys")
     @Operation(description = "Get journeys of the user")
     public ResponseEntity<List<Journey>> getJourneys(@PathVariable String username) {
