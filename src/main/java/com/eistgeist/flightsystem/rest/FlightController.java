@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("")
@@ -24,6 +25,7 @@ import java.util.List;
 @CrossOrigin
 public class FlightController {
     private final FlightService flightService;
+    private final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     @Operation(summary = "Get all the flights")
     @GetMapping("flights")
@@ -38,26 +40,47 @@ public class FlightController {
     }
 
     /* TODO: Change the search logic*/
-    @Operation(summary = "Search a flight by all the fields")
-    @GetMapping(value = "search/{departureAirportCode}/{arrivalAirportCode}/{departureDateTimeString}/{arrivalDateTimeString}",produces = {"application/json"})
-    public ResponseEntity<List<Flight>> searchFlight(@PathVariable(required = false) String departureAirportCode,
-                                                     @PathVariable(required = false) String arrivalAirportCode,
-                                                     @PathVariable String departureDateTimeString,
-                                                     @PathVariable String arrivalDateTimeString) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate departureDate = LocalDate.parse(departureDateTimeString, formatter);
-        LocalDate arrivalDate = LocalDate.parse(arrivalDateTimeString,formatter);
-        LocalDateTime departureDateTime = departureDate.atStartOfDay();
-        LocalDateTime arrivalDateTime = arrivalDate.atStartOfDay();
-        return ResponseEntity.ok(flightService.searchFlight(departureAirportCode, arrivalAirportCode, departureDateTime, arrivalDateTime));
+    @Operation(summary = "Search flights by all the fields")
+    @GetMapping(value = "search",produces = {"application/json"})
+    public ResponseEntity<List<Flight>> searchFlights(@RequestParam(value = "departureCode", required = false) Optional<String> departureAirportCode,
+                                                      @RequestParam(value = "arrivalCode", required = false) Optional<String> arrivalAirportCode,
+                                                      @RequestParam(value = "departureDate",required = false) Optional<String> departureDateTimeString,
+                                                      @RequestParam(value = "arrivalDate",required = false) Optional<String> arrivalDateTimeString) {
+        LocalDateTime departureDateTime = null;
+        LocalDateTime arrivalDateTime = null;
+        if(departureDateTimeString.isPresent()) {
+            LocalDate departureDate = LocalDate.parse(departureDateTimeString.get(), formatter);
+            departureDateTime = departureDate.atStartOfDay();
+        }
+        if(arrivalDateTimeString.isPresent()) {
+            LocalDate arrivalDate = LocalDate.parse(arrivalDateTimeString.get(),formatter);
+            arrivalDateTime = arrivalDate.atStartOfDay();
+        }
+
+        if(departureAirportCode.isPresent() && arrivalAirportCode.isPresent() && departureDateTimeString.isPresent() && arrivalDateTimeString.isPresent()) {
+            return ResponseEntity.ok(flightService.searchFlights(departureAirportCode.get(), arrivalAirportCode.get(), departureDateTime, arrivalDateTime));
+        } else if (departureAirportCode.isPresent() && arrivalAirportCode.isPresent() &&
+                departureDateTimeString.isEmpty() && arrivalDateTimeString.isEmpty()) {
+            return ResponseEntity.ok(flightService.searchFlightsByAirports(departureAirportCode.get(), arrivalAirportCode.get()));
+        } else if (departureAirportCode.isPresent() && arrivalAirportCode.isEmpty() &&
+                departureDateTimeString.isEmpty() && arrivalDateTimeString.isEmpty()) {
+            return ResponseEntity.ok(flightService.searchFlightsByDepartureAirport(departureAirportCode.get()));
+        } else if (departureAirportCode.isEmpty() && arrivalAirportCode.isPresent() &&
+                departureDateTimeString.isEmpty() && arrivalDateTimeString.isEmpty()) {
+            return ResponseEntity.ok(flightService.searchFlightsByArrivalAirport(arrivalAirportCode.get()));
+        } else if (departureAirportCode.isEmpty() && arrivalAirportCode.isEmpty() &&
+                departureDateTimeString.isPresent() && arrivalDateTimeString.isPresent()) {
+            return ResponseEntity.ok(flightService.searchFlightsByDateTimes(departureDateTime, arrivalDateTime));
+        } else if (departureAirportCode.isEmpty() && arrivalAirportCode.isEmpty() && departureDateTimeString.isPresent()) {
+            return ResponseEntity.ok(flightService.searchFlightsByDepartureTime(departureDateTime));
+        } else if (departureAirportCode.isEmpty() && arrivalAirportCode.isEmpty() && arrivalDateTimeString.isPresent()) {
+            return ResponseEntity.ok(flightService.searchFlightsByArrivalTime(arrivalDateTime));
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @Operation(summary = "Search a flight by departure and arrival airports")
-    @GetMapping(value = "search/{departureAirportCode}/{arrivalAirportCode}",produces = {"application/json"})
-    public ResponseEntity<List<Flight>> searchFlightByAirports(@PathVariable(required = false) String departureAirportCode,
-                                                     @PathVariable(required = false) String arrivalAirportCode) {
-        return ResponseEntity.ok(flightService.searchFlightByAirports(departureAirportCode, arrivalAirportCode));
-    }
+
+
 
 
 
