@@ -2,9 +2,11 @@ package com.eistgeist.flightsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +17,7 @@ public class User {
     @Id
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private String id;
-    //@Indexed(unique = true)
+    @Indexed(unique = true)
     private String userName;
     private String password;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
@@ -23,17 +25,18 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<POI> POIList;
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private JourneyList journeys; /* The flights that user saved */
+    private ArrayList<Journey> journeys; /* The flights that user saved */
 
     public User() {
+
     }
 
-    public User(String userName, String password) {
+    public User(String userName, String password, List<Coupon> coupons,List<POI> POIList, ArrayList<Journey> journeys ) {
         this.userName = userName;
         this.password = password;
-        this.coupons = new ArrayList<>();
-        this.POIList = new ArrayList<>();
-        this.journeys = new JourneyList();
+        this.coupons = coupons;
+        this.POIList = POIList;
+        this.journeys = journeys;
     }
     /* TODO: Add these use cases to the service layer
     public void savePOI(POI poi) {

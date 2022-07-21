@@ -2,7 +2,9 @@ package com.eistgeist.flightsystem.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +15,9 @@ import java.util.List;
  */
 @Data
 @AllArgsConstructor
+@Component
 public class Journey {
     private List<String> journey;
-
     public Journey() {
         this.journey = new ArrayList<>();
     }
