@@ -31,15 +31,15 @@ public class UserController {
     public ResponseEntity<List<User>> getUsers() {
         return ResponseEntity.ok(userService.getUsers());
     }
-
+    @GetMapping("{username}/journeys")
+    public ResponseEntity<List<Journey>> getJourneys(@PathVariable String username) {
+        return ResponseEntity.ok(userService.getJourneys(username));
+    }
     @PostMapping("{username}/addJourney")
     public ResponseEntity<User> addJourney(@RequestBody Journey journey, @PathVariable String username) {
         return ResponseEntity.ok(userService.addJourney(journey, username));
     }
 
-    @GetMapping("{username}/journeys")
-    public ResponseEntity<List<Journey>> getJourneys(@PathVariable String username) {
-        return ResponseEntity.ok(userService.getJourneys(username));
-    }
+
 
 }
