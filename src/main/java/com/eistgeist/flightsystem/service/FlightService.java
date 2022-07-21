@@ -1,18 +1,13 @@
 package com.eistgeist.flightsystem.service;
 
-import com.eistgeist.flightsystem.exception.AirportNotFoundException;
 import com.eistgeist.flightsystem.exception.FlightNotFoundException;
-import com.eistgeist.flightsystem.model.Airport;
 import com.eistgeist.flightsystem.model.Flight;
 import com.eistgeist.flightsystem.repository.AirportRepository;
-import com.eistgeist.flightsystem.repository.CityRepository;
 import com.eistgeist.flightsystem.repository.FlightRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,9 +17,10 @@ public class FlightService {
     private FlightRepository flightRepository;
     private AirportRepository airportRepository;
 
-    public List<Flight> getFlights(){
+    public List<Flight> getFlights() {
         return flightRepository.findAll();
     }
+
     public List<Flight> searchFlight(String departureAirportCode, String arrivalAirportCode, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime) {
         return flightRepository.findFlightsByDepartureAirportAirportCodeIgnoreCaseAndArrivalAirportAirportCodeIgnoreCaseAndDepartureDateTimeGreaterThanEqualAndArrivalDateTimeLessThanEqual
                         (departureAirportCode, arrivalAirportCode, departureDateTime, arrivalDateTime)

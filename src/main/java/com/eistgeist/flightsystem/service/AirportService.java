@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class AirportService {
     private AirportRepository airportRepository;
+
     public Airport addAirport(Airport airport) {
         return airportRepository.save(airport);
     }

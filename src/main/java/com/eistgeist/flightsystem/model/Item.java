@@ -9,10 +9,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.net.URL;
 
-enum Category{
+enum Category {
     FOOD,
     DRINK
 }
+
 /**
  * This item can be a food, drink etc.
  */

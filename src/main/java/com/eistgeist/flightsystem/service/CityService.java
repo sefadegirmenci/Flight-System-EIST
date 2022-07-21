@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CityService {
     private CityRepository cityRepository;
+
     public List<City> getCities() {
         return cityRepository.findAll();
     }

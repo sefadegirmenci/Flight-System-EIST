@@ -16,21 +16,27 @@ import java.util.List;
 public class InFlightService {
     private InFlightRepository inFlightRepository;
     private MovieRepository movieRepository;
+
     public List<Item> getItems() {
         return inFlightRepository.findAll();
     }
+
     public Item addItem(Item item) {
         return inFlightRepository.save(item);
     }
+
     public Item searchItem(String name) {
         return inFlightRepository.findItemByName(name).orElseThrow(() -> new ItemNotFoundException("Item not found"));
     }
+
     public List<Movie> getMovies() {
         return movieRepository.findAll();
     }
+
     public Movie addMovie(Movie movie) {
         return movieRepository.save(movie);
     }
+
     public Movie searchMovie(String name) {
         return movieRepository.findMovieByName(name).orElseThrow(() -> new MovieNotFoundException("Movie not found"));
     }

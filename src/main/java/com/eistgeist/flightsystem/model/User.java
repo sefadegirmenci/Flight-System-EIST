@@ -2,11 +2,9 @@ package com.eistgeist.flightsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,7 @@ public class User {
 
     }
 
-    public User(String userName, String password, List<Coupon> coupons,List<POI> POIList, ArrayList<Journey> journeys ) {
+    public User(String userName, String password, List<Coupon> coupons, List<POI> POIList, ArrayList<Journey> journeys) {
         this.userName = userName;
         this.password = password;
         this.coupons = coupons;

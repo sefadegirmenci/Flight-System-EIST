@@ -19,13 +19,15 @@ public class UserService {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+
     public User addUser(User user) {
         return userRepository.save(user);
     }
+
     public User addJourney(Journey journey, String userName) {
         User user = userRepository.findUserByUserNameIgnoreCase(userName).orElseThrow(() -> new IllegalStateException("User not found"));
         ArrayList<Journey> journeys = user.getJourneys();
-        if(journeys == null) {
+        if (journeys == null) {
             journeys = new ArrayList<>();
         }
         journeys.add(journey);
