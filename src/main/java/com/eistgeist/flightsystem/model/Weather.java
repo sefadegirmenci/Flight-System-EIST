@@ -2,10 +2,11 @@ package com.eistgeist.flightsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Data;
-
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonPropertyOrder(alphabetic = true)
 public class Weather {
     private double temp_c;
     @JsonProperty("condition")
@@ -15,4 +16,5 @@ public class Weather {
     private double humidity;
     private double feelslike_c;
     private double uv;
+
 }
