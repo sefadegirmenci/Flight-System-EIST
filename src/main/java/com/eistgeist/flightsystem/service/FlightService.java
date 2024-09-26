@@ -4,6 +4,7 @@ import com.eistgeist.flightsystem.exception.FlightNotFoundException;
 import com.eistgeist.flightsystem.model.Flight;
 import com.eistgeist.flightsystem.repository.AirportRepository;
 import com.eistgeist.flightsystem.repository.FlightRepository;
+import com.eistgeist.flightsystem.rest.ExploreListMetadataDto;
 import lombok.AllArgsConstructor;
 import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Service;
@@ -59,6 +60,10 @@ public class FlightService {
     public Flight searchFlightById(String id) {
         return flightRepository.findById(id)
                 .orElseThrow(() -> new FlightNotFoundException("Flight not found"));
+    }
+
+    public ExploreListMetadataDto explore(String id) {
+        return null;
     }
 
     public Flight addFlight(Flight flight) {

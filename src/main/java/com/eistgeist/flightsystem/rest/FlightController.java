@@ -4,7 +4,7 @@ import com.eistgeist.flightsystem.model.Airport;
 import com.eistgeist.flightsystem.model.Flight;
 import com.eistgeist.flightsystem.service.FlightService;
 import io.swagger.v3.oas.annotations.Operation;
-import lombok.AllArgsConstructor;
+import lombok.*;
 import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("")
@@ -85,6 +83,11 @@ public class FlightController {
         return ResponseEntity.ok(flightService.searchFlightById(id));
     }
 
+    @Operation(summary = "Search a flight by ID")
+    @GetMapping(value = "v1/explore-lists/{id}",produces = {"application/json"})
+    public ResponseEntity<ExploreListMetadataDto> exploreList(@PathVariable String id) {
+        return ResponseEntity.ok(flightService.explore(id));
+    }
 
 
 
