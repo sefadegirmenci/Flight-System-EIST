@@ -2,8 +2,15 @@ plugins {
 	id 'org.springframework.boot' version '2.7.0'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+  	id "org.sonarqube" version "6.0.1.5171"
 }
 
+sonar {
+  properties {
+    property "sonar.projectKey", "sefadegirmenci_Flight-System-EIST_c4a49de4-b5e3-4926-98fb-c4199a9a2cbf"
+    property "sonar.projectName", "Flight-System-EIST"
+  }
+}
 group = 'com.eistgeist'
 version = '1.0'
 sourceCompatibility = '17'
